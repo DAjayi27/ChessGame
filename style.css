@@ -32,12 +32,22 @@ body{
 
 .chess_position_w{
     background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .chess_position_b{
-    background-color: black;
+    background-color: #813000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .red{
     background-color: red;
+}
+
+span{
+    font-size: 60px;
 }

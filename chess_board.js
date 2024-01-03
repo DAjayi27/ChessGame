@@ -34,12 +34,16 @@ function loadChessBoard() {
             if (j%2 == 0) {
                 indexPosition = columnStartingColour;
                 chessdiv.className = classes.get(columnStartingColour);
+                loadChessPieces(i,j,chessdiv); 
                 chessBoard.appendChild(chessdiv);
+               
             }
             else{
                 indexPosition = columnStartingColour+1;
                 chessdiv.className = classes.get(indexPosition);
+                loadChessPieces(i,j,chessdiv);
                 chessBoard.appendChild(chessdiv)
+                
             }
         }
         
@@ -47,8 +51,14 @@ function loadChessBoard() {
     
 }
 
-function loadChessPieces() {
+function loadChessPieces(i , j, chessdiv) {
     const chessPiecesMap = new Map();
+
+    const chessBoard = document.getElementById("main_board").childNodes;
+
+    let chesspiece =  document.createElement("span");
+
+
 
     // White pieces
     chessPiecesMap.set("white_king", "♔");
@@ -56,9 +66,9 @@ function loadChessPieces() {
     chessPiecesMap.set("white_rook", "♖");
     chessPiecesMap.set("white_bishop", "♗");
     chessPiecesMap.set("white_knight", "♘");
-    chessPiecesMap.set("white_pawn", "♙");
+    chessPiecesMap.set("white_pawn", "&#9817;");
 
-    // Black pieces
+    // Black pieces 
     chessPiecesMap.set("black_king", "♚");
     chessPiecesMap.set("black_queen", "♛");
     chessPiecesMap.set("black_rook", "♜");
@@ -66,11 +76,20 @@ function loadChessPieces() {
     chessPiecesMap.set("black_knight", "♞");
     chessPiecesMap.set("black_pawn", "♟");
 
-    for (let i = 0; i < 8; i++) {
-        for (let j = 0; j < 8; j++) {
-            
-            
+   
+
+    if (i === 1 || i === 6) {
+        if (i === 1) {
+            chesspiece.innerHTML = chessPiecesMap.get("black_pawn");
+            chesspiece.className = "span"
+            chessdiv.appendChild(chesspiece);
+        }
+        else{
+            chesspiece.innerHTML = chessPiecesMap.get("white_pawn");
+            chesspiece.className = "span"
+            chessdiv.appendChild(chesspiece);
         }
     }
 
+   
 }
