@@ -1,0 +1,43 @@
+html{
+    height: 100%;
+}
+
+body{
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    margin: 0;
+    align-items: center;
+    justify-items: center;
+    
+}
+
+.main_board{
+    display: grid;
+    height: 70vh;
+    border: 1PX solid black;
+    grid-template-rows: repeat(8,1fr);
+    grid-template-columns: repeat(8,1fr);
+    aspect-ratio: 1/1;
+    
+
+}
+
+@media screen and (max-width : 1070px) {
+    .main_board{
+        height: 70vw;
+    }
+}
+
+.chess_position_w{
+    background-color: white;
+}
+
+.chess_position_b{
+    background-color: black;
+}
+
+.red{
+    background-color: red;
+}
