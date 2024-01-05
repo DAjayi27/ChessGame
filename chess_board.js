@@ -34,14 +34,12 @@ function loadChessBoard() {
             if (j%2 == 0) {
                 indexPosition = columnStartingColour;
                 chessdiv.className = classes.get(columnStartingColour);
-                loadChessPieces(i,j,chessdiv); 
                 chessBoard.appendChild(chessdiv);
                
             }
             else{
                 indexPosition = columnStartingColour+1;
                 chessdiv.className = classes.get(indexPosition);
-                loadChessPieces(i,j,chessdiv);
                 chessBoard.appendChild(chessdiv)
                 
             }
@@ -51,45 +49,112 @@ function loadChessBoard() {
     
 }
 
-function loadChessPieces(i , j, chessdiv) {
+function loadChessPieces() {
     const chessPiecesMap = new Map();
 
     const chessBoard = document.getElementById("main_board").childNodes;
 
-    let chesspiece =  document.createElement("span");
+    let chesspiece =  document.createElement("img");
 
 
 
     // White pieces
-    chessPiecesMap.set("white_king", "♔");
-    chessPiecesMap.set("white_queen", "♕");
-    chessPiecesMap.set("white_rook", "♖");
-    chessPiecesMap.set("white_bishop", "♗");
-    chessPiecesMap.set("white_knight", "♘");
-    chessPiecesMap.set("white_pawn", "&#9817;");
+    chessPiecesMap.set("white_king", "chess pieces/king_white.png");
+    chessPiecesMap.set("white_queen", "chess pieces/queen_white.png");
+    chessPiecesMap.set("white_rook", "chess pieces/rook_white.png");
+    chessPiecesMap.set("white_bishop", "chess pieces/bishop_white.png");
+    chessPiecesMap.set("white_knight", "chess pieces/knight_white.png");
+    chessPiecesMap.set("white_pawn", "chess pieces/pawn_white.png");
 
     // Black pieces 
-    chessPiecesMap.set("black_king", "♚");
-    chessPiecesMap.set("black_queen", "♛");
-    chessPiecesMap.set("black_rook", "♜");
-    chessPiecesMap.set("black_bishop", "♝");
-    chessPiecesMap.set("black_knight", "♞");
-    chessPiecesMap.set("black_pawn", "♟");
+    chessPiecesMap.set("black_king", "chess pieces/king_black.png");
+    chessPiecesMap.set("black_queen", "chess pieces/queen_black.png");
+    chessPiecesMap.set("black_rook", "chess pieces/rook_black.png");
+    chessPiecesMap.set("black_bishop", "chess pieces/bishop_black.png");
+    chessPiecesMap.set("black_knight", "chess pieces/knight_black.png");
+    chessPiecesMap.set("black_pawn", "chess pieces/pawn_black.png");
 
    
+    for (let i = 0; i < chessBoard.length; i++) {
+        let chesspiece =  document.createElement("img");
 
-    if (i === 1 || i === 6) {
-        if (i === 1) {
-            chesspiece.innerHTML = chessPiecesMap.get("black_pawn");
-            chesspiece.className = "span"
-            chessdiv.appendChild(chesspiece);
+        if( i > 15 && i < 48  ){
+            continue;
         }
-        else{
-            chesspiece.innerHTML = chessPiecesMap.get("white_pawn");
-            chesspiece.className = "span"
-            chessdiv.appendChild(chesspiece);
+
+        if (i > 7  && i < 56 ) {
+            if (i > 47) {
+               chesspiece.src = chessPiecesMap.get("black_pawn");
+            }
+            else{
+                chesspiece.src = chessPiecesMap.get("white_pawn");
+            }
         }
+        else if ( i < 8) {
+            switch (i) {
+                case 0:
+                case 7:
+                    chesspiece.src = chessPiecesMap.get("white_rook")
+                    break;
+
+                case 1:
+                case 6:
+                    chesspiece.src = chessPiecesMap.get("white_knight")
+                    break;
+                case 2:
+                case 5:
+                    chesspiece.src = chessPiecesMap.get("white_bishop")
+                    break;
+
+                case 3:
+                    chesspiece.src = chessPiecesMap.get("white_king")
+                    break;
+
+                case 4:
+                    chesspiece.src = chessPiecesMap.get("white_queen")
+
+            
+                
+            }
+        }
+
+        else if (i > 55) {
+            
+        
+
+            switch (i) {
+                case 56:
+                case 63:
+                    chesspiece.src = chessPiecesMap.get("black_rook")
+                    break;
+
+                case 57:
+                case 62:
+                    chesspiece.src = chessPiecesMap.get("black_knight")
+                    break;
+                case 58:
+                case 61:
+                    chesspiece.src = chessPiecesMap.get("black_bishop")
+                    break;
+
+                case 59:
+                    chesspiece.src = chessPiecesMap.get("black_king")
+                    break;
+
+                case 60:
+                    chesspiece.src = chessPiecesMap.get("black_queen")
+
+            
+                
+            }
+
+        }
+        
+
+        chessBoard[i].appendChild(chesspiece);
+        
     }
+    
 
    
 }

@@ -24,11 +24,6 @@ body{
 
 }
 
-@media screen and (max-width : 1070px) {
-    .main_board{
-        height: 70vw;
-    }
-}
 
 .chess_position_w{
     background-color: white;
@@ -38,7 +33,7 @@ body{
 }
 
 .chess_position_b{
-    background-color: #813000;
+    background-color: black;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,6 +43,24 @@ body{
     background-color: red;
 }
 
-span{
-    font-size: 60px;
+.chess_piece{
+    aspect-ratio: 1/1;
+  
+}
+
+
+@media screen and (max-width : 1070px) {
+    .main_board{
+        height: 70vw;
+    }
+
+}
+
+
+@media screen and (max-width : 600px) {
+   
+    .chess_piece{
+        width: 32px;
+        height: 32px;
+    }
 }
